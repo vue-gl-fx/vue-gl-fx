@@ -1,28 +1,115 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <shader
+      class="app_shader"
+      :code="glslCode"
+    >
+      <img src="http://picsum.photos/256/256/?random&v=1">
+      <img src="http://picsum.photos/256/256/?random&v=2">
+    </shader>
+    <div class="app_control">
+      <textarea
+        class="app_control-textarea"
+        v-model.lazy="glslCode"
+        placeholder="insert GLSL code here">
+      </textarea><div class="app_control-notes">
+        <p>https://www.shadertoy.com/lib/piLibs.js</p>
+        <p>https://www.shadertoy.com/js/effect.js</p>
+        <p>Shader Toy Examples:</p>
+        <ul>
+          <li>https://www.shadertoy.com/new</li>
+          <li>https://www.shadertoy.com/view/MdSGDm</li>
+          <li>https://www.shadertoy.com/view/llyyRd</li>
+          <li>https://www.shadertoy.com/view/4tXGW4</li>
+          <li>https://www.shadertoy.com/view/Ms2SD1</li>
+          <li>https://www.shadertoy.com/view/4lVyRR</li>
+        </ul>
+        <p>Don't work:</p>
+        <ul>
+          <li>https://www.shadertoy.com/view/llyyRd</li>
+          <li>https://www.shadertoy.com/view/ltVyRd</li>
+          <li>https://www.shadertoy.com/view/Xds3zN</li>
+          <li>https://www.shadertoy.com/view/ls2SDD</li>
+          <li>https://www.shadertoy.com/view/Xt2yWt</li>
+        </ul>
+        <p>Todo:</p>
+        <ul>
+          <li>check delta time</li>
+          <li>add Error message</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Shader from './components/Shader.vue';
+
+const DEFAULT_SHADER = `void main() {
+  vec2 st = gl_FragCoord.xy / iResolution.xy;
+  gl_FragColor = vec4(st.xy, (cos(iTime) + 1.0) * 0.5, 1.0);
+}`;
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
-  }
-}
+    Shader,
+  },
+  data() {
+    return {
+      glslCode: DEFAULT_SHADER,
+    };
+  },
+};
 </script>
 
-<style>
+<style lang="stylus">
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  display: flex;
+  height: 100vh;
+}
+
+.app_shader, .app_control {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.app_control-textarea {
+  font-family: "Lucida Console", Monaco, monospace;
+  width: 100%;
+  height: 50%;
+  border: none;
+  border-bottom: 1px solid silver;
+  resize: none;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: small;
+  line-height: 1.5;
+  &::after {
+    display: none;
+  }
+}
+
+.app_control-notes {
+  text-align: left;
+  height: 49%;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  font-size: medium;
+  * {
+    margin: 0;
+  }
 }
 </style>
