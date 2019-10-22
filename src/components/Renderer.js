@@ -95,6 +95,7 @@ uniform vec4      iDate;                 // (year, month, day, time in seconds)
       fsSource += `\nvoid main() {
   mainImage(gl_FragColor, gl_FragCoord.xy);
 }`;
+      fsSource = fsSource.replace(/texture\(/g, "texture2D(");
     }
     console.log(fsSource);
     this.updateProgram(fsSource);
