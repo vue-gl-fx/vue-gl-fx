@@ -5,6 +5,7 @@
   "license": "MIT",
   "description": "A simple WebGL components for accelerated 2D filter or effects. Can be used with Shadertoys codes",
   "main": "dist/index.js",
+  "author":"Nicolas Chesné & Laurent Gabarre",
   "scripts": {
     "dev": "npm run build && ./node_modules/poi/bin/cli.js",
     "build:demo": "./node_modules/poi/bin/cli.js build",
@@ -14,7 +15,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/{username}/{component-name}"
+    "url": "https://github.com/vue-gl-fx/vue-gl-fx"
   },
   "keywords": [
     "keywords",
@@ -22,7 +23,7 @@
     "npmjs.com"
   ],
   "bugs": {
-    "url": "https://github.com/{username}/{component-name}/issues"
+    "url": "https://github.com/vue-gl-fx/vue-gl-fx/issues"
   },
   "peerDependencies": {
     "vue": "^2.5.2"
