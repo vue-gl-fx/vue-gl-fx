@@ -6,7 +6,7 @@
   "description": "A simple WebGL components for accelerated 2D filter or effects. Can be used with Shadertoys codes",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "./node_modules/poi/bin/cli.js",
+    "dev": "npm run build && ./node_modules/poi/bin/cli.js",
     "build:demo": "./node_modules/poi/bin/cli.js build",
     "build": "rm -rf ./dist && ./node_modules/bili/dist/cli.js",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
