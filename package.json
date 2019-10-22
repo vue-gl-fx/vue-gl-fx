@@ -8,7 +8,9 @@
   "scripts": {
     "dev": "./node_modules/poi/bin/cli.js",
     "build:demo": "./node_modules/poi/bin/cli.js build",
-    "build": "rm -rf ./dist && ./node_modules/bili/dist/cli.js"
+    "build": "rm -rf ./dist && ./node_modules/bili/dist/cli.js",
+    "lint": "eslint --ext .js,.vue src example",
+    "test":"npm run lint"
   },
   "repository": {
     "type": "git",
