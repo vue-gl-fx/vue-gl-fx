@@ -9,7 +9,7 @@
     "dev": "./node_modules/poi/bin/cli.js",
     "build:demo": "./node_modules/poi/bin/cli.js build",
     "build": "rm -rf ./dist && ./node_modules/bili/dist/cli.js",
-    "lint": "eslint --ext .js,.vue src example",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test":"npm run lint"
   },
   "repository": {
