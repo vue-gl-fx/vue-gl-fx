@@ -1,11 +1,11 @@
 <template>
   <canvas
     v-if="webglAvailable"
-    class="vue-shader"
     ref="canvas"
+    class="vue-shader"
     style="background-color:black"
   >
-    <slot></slot>
+    <slot/>
   </canvas>
   <p v-else>WebGL not available on this device</p>
 </template>
@@ -22,6 +22,12 @@ export default {
     return {
       webglAvailable: true,
     };
+  },
+  watch: {
+    code(value) {
+      this.renderer.setFragmentShader(value);
+      this.draw();
+    },
   },
   async mounted() {
     const { canvas } = this.$refs;
@@ -65,12 +71,6 @@ export default {
     draw() {
       this.renderer.draw();
       this.rafId = requestAnimationFrame(this.draw);
-    },
-  },
-  watch: {
-    code(value) {
-      this.renderer.setFragmentShader(value);
-      this.draw();
     },
   },
 };

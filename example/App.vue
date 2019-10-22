@@ -1,49 +1,48 @@
 <template>
   <div id="app">
     <shader
-      class="app_shader"
       :code="glslCode"
+      class="app_shader"
     >
       <img src="http://picsum.photos/256/256/?random&v=1">
       <img src="http://picsum.photos/256/256/?random&v=2">
     </shader>
     <div class="app_control">
       <textarea
-        class="app_control-textarea"
         v-model.lazy="glslCode"
-        placeholder="insert GLSL code here">
-      </textarea><div class="app_control-notes">
-        <p>https://www.shadertoy.com/lib/piLibs.js</p>
-        <p>https://www.shadertoy.com/js/effect.js</p>
-        <p>Shader Toy Examples:</p>
-        <ul>
-          <li>https://www.shadertoy.com/new</li>
-          <li>https://www.shadertoy.com/view/MdSGDm</li>
-          <li>https://www.shadertoy.com/view/llyyRd</li>
-          <li>https://www.shadertoy.com/view/4tXGW4</li>
-          <li>https://www.shadertoy.com/view/Ms2SD1</li>
-          <li>https://www.shadertoy.com/view/4lVyRR</li>
-        </ul>
-        <p>Don't work:</p>
-        <ul>
-          <li>https://www.shadertoy.com/view/llyyRd</li>
-          <li>https://www.shadertoy.com/view/ltVyRd</li>
-          <li>https://www.shadertoy.com/view/Xds3zN</li>
-          <li>https://www.shadertoy.com/view/ls2SDD</li>
-          <li>https://www.shadertoy.com/view/Xt2yWt</li>
-        </ul>
-        <p>Todo:</p>
-        <ul>
-          <li>check delta time</li>
-          <li>add Error message</li>
-        </ul>
-      </div>
+        class="app_control-textarea"
+        placeholder="insert GLSL code here"/><div class="app_control-notes">
+          <p>https://www.shadertoy.com/lib/piLibs.js</p>
+          <p>https://www.shadertoy.com/js/effect.js</p>
+          <p>Shader Toy Examples:</p>
+          <ul>
+            <li>https://www.shadertoy.com/new</li>
+            <li>https://www.shadertoy.com/view/MdSGDm</li>
+            <li>https://www.shadertoy.com/view/llyyRd</li>
+            <li>https://www.shadertoy.com/view/4tXGW4</li>
+            <li>https://www.shadertoy.com/view/Ms2SD1</li>
+            <li>https://www.shadertoy.com/view/4lVyRR</li>
+          </ul>
+          <p>Don't work:</p>
+          <ul>
+            <li>https://www.shadertoy.com/view/llyyRd</li>
+            <li>https://www.shadertoy.com/view/ltVyRd</li>
+            <li>https://www.shadertoy.com/view/Xds3zN</li>
+            <li>https://www.shadertoy.com/view/ls2SDD</li>
+            <li>https://www.shadertoy.com/view/Xt2yWt</li>
+          </ul>
+          <p>Todo:</p>
+          <ul>
+            <li>check delta time</li>
+            <li>add Error message</li>
+          </ul>
+        </div>
     </div>
   </div>
 </template>
 
 <script>
-import Shader from './components/Shader.vue';
+import Shader from '../src/components/Shader.vue';
 
 const DEFAULT_SHADER = `void main() {
   vec2 st = gl_FragCoord.xy / iResolution.xy;
@@ -51,7 +50,7 @@ const DEFAULT_SHADER = `void main() {
 }`;
 
 export default {
-  name: 'app',
+  name: 'App',
   components: {
     Shader,
   },
