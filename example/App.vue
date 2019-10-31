@@ -1,12 +1,32 @@
 <template>
-  <div id="app">
-    <shader
+  <div 
+    id="app">
+    <gl-fx
       :code="glslCode"
       class="app_shader"
     >
-      <img src="http://picsum.photos/256/256/?random&v=1">
-      <img src="http://picsum.photos/256/256/?random&v=2">
-    </shader>
+      <gl-fx-uniform 
+        :input="0.8"
+        type="float"
+        name="iFloat"/>
+      <gl-fx-uniform 
+        :input="color"
+        type="vec3"
+        name="iColor"/>
+      <gl-fx-uniform 
+        :input="color"
+        type="vec3"
+        name="iColor2"/>
+      <gl-fx-uniform 
+        :vflip="vflip"
+        name="iChannel0"
+        type="sampler2D"
+        input="http://picsum.photos/256/256/?random&v=1"
+        autoplay="true"/>
+        <!--<gl-fx-uniform 
+        type="2DSampler" 
+        input="http://picsum.photos/256/256/?random&v=2"/> -->
+    </gl-fx>
     <div class="app_control">
       <textarea
         v-model.lazy="glslCode"
@@ -42,7 +62,10 @@
 </template>
 
 <script>
-import Shader from '../src/components/Shader.vue';
+
+const SOLID_SHADER = `void main() {
+  gl_FragColor = vec4(iColor, iFloat);
+}`;
 
 const DEFAULT_SHADER = `void main() {
   vec2 st = gl_FragCoord.xy / iResolution.xy;
@@ -51,14 +74,22 @@ const DEFAULT_SHADER = `void main() {
 
 export default {
   name: 'App',
-  components: {
-    Shader,
-  },
   data() {
     return {
-      glslCode: DEFAULT_SHADER,
+      glslCode: SOLID_SHADER,
+      vflip: false,
+      color: [0.5,0.0,1.0]
     };
   },
+  mounted(){
+    window.requestAnimationFrame(this.update)
+  },
+  methods: {
+    update(){
+      this.color = [Math.random(), Math.random(), Math.random()];
+      //window.requestAnimationFrame(this.update)
+    }
+  }
 };
 </script>
 

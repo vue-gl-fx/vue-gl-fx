@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import App from './App'
-import Shader from '../src/index'
+import {GlFx, GlFxUniform, GlFxResolution} from '../src/index'
 
-Vue.component('Shader', Shader)
+ Vue.component('gl-fx', GlFx)
+ Vue.component('gl-fx-uniform', GlFxUniform)
+ Vue.component('gl-fx-resolution', GlFxResolution)
 
 /* eslint-disable no-new */
 new Vue({

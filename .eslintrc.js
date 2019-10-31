@@ -18,6 +18,7 @@ module.exports = {
     // allow async-await
     'space-before-function-paren': 'off',
     'generator-star-spacing': 'off',
-    'no-undef': 'off'
+    'no-undef': 'off',
+    "prefer-template": 'error'
   }
 }

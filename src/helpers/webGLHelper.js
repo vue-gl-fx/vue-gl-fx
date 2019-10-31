@@ -16,6 +16,7 @@ export const initShader = (gl, vsSource, fsSource) => {
   gl.attachShader(shaderProgram, vertexShader);
   gl.attachShader(shaderProgram, fragmentShader);
   gl.linkProgram(shaderProgram);
+  gl.useProgram(shaderProgram);
   if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
     console.log(`Error when initialising the program : ${gl.getProgramInfoLog(shaderProgram)}`);
     throw new Error(gl.getProgramInfoLog(shaderProgram));
