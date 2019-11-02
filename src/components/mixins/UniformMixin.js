@@ -78,8 +78,16 @@ export default {
             this.glInfo.program = program
             this.glInfo.loc = this.context.gl.getUniformLocation(this.glInfo.program, this.name)
         },
+        beforeUpdate(){
+
+        },
         update(){
+            this.beforeUpdate();
             this.$refs.child.update(this.context.gl, this.glInfo)
+            this.afterUpdate();
+        },
+        afterUpdate(){
+
         },
         destroy() {
             this.context = null;

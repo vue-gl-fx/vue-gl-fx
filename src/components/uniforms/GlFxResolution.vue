@@ -41,6 +41,9 @@ export default {
         afterInit(){
             this.updateRes()
         },
+        afterUpdate(){
+            this.updateRes();
+        },
         updateRes(){
             this.width = this.context.gl.drawingBufferWidth;
             this.height = this.context.gl.drawingBufferHeight;
