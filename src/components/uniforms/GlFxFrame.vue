@@ -9,7 +9,7 @@
     ref="child"
     :is="getTypeComponent()" 
     :name="name" 
-    :input="time"
+    :input="frame"
     v-bind="$attrs"
     @ready="onReady"/>
 </template>
@@ -20,38 +20,28 @@ import mixin from "@/components/mixins/UniformMixin"
 
 export default {
     mixins: [mixin],
-    props: {
-        isDelta: {
-            type: Boolean,
-            default: false
-        }
-    },
     data(){
         return {
-            time:0,
-            lastUpdate: 0,
-            delta: 0
+            frame: 0
         }
     },
     computed:{
         value(){
-            return this.isDelta ? this.delta:this.time
+            return this.frame
         }
     },
     methods: {
         getType(){
-            return "float"
+            return "int"
         },
         getTypeComponent(){
-            return "Uniformfloat"
+            return "Uniformint"
         },
         afterInit(){
-            this.lastUpdate = 0;
+            this.frame = 0;
         },
-        beforeUpdate(now){
-            this.time = now
-            this.delta = this.time - this.lastUpdate;
-            this.lastUpdate = this.time;
+        beforeUpdate(){
+            this.frame++
         }
     }
 }

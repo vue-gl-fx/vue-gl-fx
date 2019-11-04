@@ -17,6 +17,10 @@
         :input="color"
         type="vec3"
         name="iColor2"/>
+      <gl-fx-time 
+        :input="color"
+        type="vec3"
+        name="iTime2"/>
       <gl-fx-uniform 
         :vflip="vflip"
         name="iChannel0"
@@ -63,10 +67,6 @@
 
 <script>
 
-const SOLID_SHADER = `void main() {
-  gl_FragColor = vec4(iColor, iFloat);
-}`;
-
 const DEFAULT_SHADER = `void main() {
   vec2 st = gl_FragCoord.xy / iResolution.xy;
   gl_FragColor = vec4(st.xy, (cos(iTime) + 1.0) * 0.5, 1.0);
@@ -76,7 +76,7 @@ export default {
   name: 'App',
   data() {
     return {
-      glslCode: SOLID_SHADER,
+      glslCode: DEFAULT_SHADER,
       vflip: false,
       color: [0.5,0.0,1.0]
     };

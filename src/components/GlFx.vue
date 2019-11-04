@@ -6,11 +6,16 @@
     style="background-color:black"
   >
     <slot/>
-    <gl-fx-uniform
+    <gl-fx-time
       v-if="injectShaderToyUniforms"
-      :input="0"
-      type="float"
       name="iTime"/>
+    <gl-fx-time 
+      v-if="injectShaderToyUniforms"
+      :is-delta="true"
+      name="iTimeDelta"/>
+    <gl-fx-frame 
+      v-if="injectShaderToyUniforms"
+      name="iFrame"/>
     <gl-fx-resolution 
       v-if="injectShaderToyUniforms"
       name="iResolution"/>

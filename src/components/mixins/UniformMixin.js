@@ -1,5 +1,6 @@
 import UniformSampler2D from "@/components/types/GlFxTypeSampler2D.vue"
 import Uniformfloat from "@/components/types/GlFxTypeFloat.vue"
+import Uniformint from "@/components/types/GlFxTypeInt.vue"
 import Uniformvec3 from "@/components/types/GlFxTypeVec3.vue"
 import Uniformvec2 from "@/components/types/GlFxTypeVec2.vue"
 import Uniformvec4 from "@/components/types/GlFxTypeVec4.vue"
@@ -10,7 +11,8 @@ export default {
         Uniformfloat,
         Uniformvec3,
         Uniformvec2,
-        Uniformvec4
+        Uniformvec4,
+        Uniformint
     },
     props: {
         type: {
@@ -83,10 +85,10 @@ export default {
         beforeUpdate(){
 
         },
-        update(){
-            this.beforeUpdate();
+        update(now){
+            this.beforeUpdate(now);
             this.$refs.child.update(this.context.gl, this.glInfo)
-            this.afterUpdate();
+            this.afterUpdate(now);
         },
         afterUpdate(){
 
