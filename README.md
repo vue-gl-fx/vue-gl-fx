@@ -27,6 +27,9 @@
 
 - A simple WebGL components for accelerated 2D filter or effects. Can be used with Shadertoys codes
 
+## Demo
+A partially working playground can be found <a href="https://vue-gl-fx.github.io/vue-gl-fx" target="_blank">here</a>
+
 ## TODO
 Heavily work in progress.
 - Write docs
