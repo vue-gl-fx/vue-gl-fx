@@ -68,6 +68,18 @@ class ContextManager {
     })
   }
 
+  reset(){
+    this.lastRenderDate = 0;
+
+    this.uniforms.forEach(uni => {
+      try {
+        uni.reset();
+      } catch(err){
+        //eslint-disable-line
+      }
+  })
+  }
+
   setFragmentShader(source) {
     const isShaderToy = source.indexOf('void mainImage') > -1;
     let fsSource = `precision mediump float;`
@@ -100,11 +112,10 @@ class ContextManager {
   }
 
   updateUniforms() {
+    const now = window.performance.now()*.001;
     this.uniforms.forEach(uni => {
-        uni.update();
+        uni.update(now);
     })
-
-    
   }
 
   clear() {
