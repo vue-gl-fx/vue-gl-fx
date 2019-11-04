@@ -6,9 +6,8 @@
 <br>
 
 <p align="center">
-  <img alt="GitHub release" src="https://img.shields.io/badge/release-v1.0.0-orange.svg?style=for-the-badge"/>
-  <img alt="poi" src="https://img.shields.io/badge/poi-10-green.svg?style=for-the-badge"/>
-  <img alt="Bili" src="https://img.shields.io/badge/bili-3-blue.svg?style=for-the-badge"/>
+  <img alt="GitHub release" src="https://img.shields.io/github/package-json/v/vue-gl-fx/vue-gl-fx/develop.svg?style=for-the-badge&color=blue"/>
+  <img alt="NPM Release" src="https://img.shields.io/npm/v/vue-gl-fx.svg?style=for-the-badge"/>
 </p>
 
 <br>
