@@ -6,8 +6,12 @@
 <br>
 
 <p align="center">
-  <img alt="GitHub release" src="https://img.shields.io/github/package-json/v/vue-gl-fx/vue-gl-fx/develop.svg?style=for-the-badge&color=blue"/>
-  <img alt="NPM Release" src="https://img.shields.io/npm/v/vue-gl-fx.svg?style=for-the-badge"/>
+  <a href="https://github.com/vue-gl-fx/vue-gl-fx/">
+    <img alt="GitHub release" src="https://img.shields.io/github/package-json/v/vue-gl-fx/vue-gl-fx/develop.svg?style=for-the-badge&color=blue"/>
+  </a>
+  <a href="https://www.npmjs.com/package/vue-gl-fx">
+    <img alt="NPM Release" src="https://img.shields.io/npm/v/vue-gl-fx.svg?style=for-the-badge"/>
+  </a>
 </p>
 
 <br>
