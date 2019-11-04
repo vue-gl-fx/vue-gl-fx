@@ -48,7 +48,8 @@ export default {
         },
         init(gl, glInfo){ //eslint-disable-line no-unused-vars
             // to override
-            return initTexture(gl, this.value, false);
+            const tex = initTexture(gl, this.value, false, this.vflip);
+            return tex;
         },
         update(gl, glInfo){
             gl.activeTexture(gl[`TEXTURE${glInfo.index}`]);
