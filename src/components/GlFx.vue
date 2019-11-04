@@ -19,6 +19,9 @@
     <gl-fx-resolution 
       v-if="injectShaderToyUniforms"
       name="iResolution"/>
+    <gl-fx-mouse
+      v-if="injectShaderToyUniforms"
+      name="iMouse"/>
   </canvas>
   <p v-else>WebGL not available on this device</p>
 </template>
