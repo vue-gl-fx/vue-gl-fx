@@ -41,7 +41,7 @@ export default {
         afterInit(){
             this.updateRes()
         },
-        afterUpdate(){
+        beforeUpdate(){
             this.updateRes();
         },
         updateRes(){
