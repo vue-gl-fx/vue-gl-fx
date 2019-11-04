@@ -18,9 +18,10 @@
 
 <p align="center">
   <b>
-    <a href="https://github.com/waynecz/Holmes">Holmes: Server boilerplate you might need</a>
-    |
-    <a href="https://github.com/waynecz/vue-img-inputer">Place other links here</a>
+    Created and Maintained by
+    <a href="http://www.norbz.tech/">Nicolas Chesné</a>
+    and 
+    <a href="https://laurentgabarre.fr/">Laurent Gabarre</a>
   </b>
 </p>
 
