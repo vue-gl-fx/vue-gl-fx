@@ -77,7 +77,7 @@ export default {
   data() {
     return {
       glslCode: DEFAULT_SHADER,
-      vflip: false,
+      vflip: true,
       color: [0.5,0.0,1.0]
     };
   },
