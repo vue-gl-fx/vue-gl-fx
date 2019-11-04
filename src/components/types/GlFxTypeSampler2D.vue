@@ -55,8 +55,7 @@ export default {
         img.src = path;
       });
     },
-    init(gl, glInfo) {
-      //eslint-disable-line no-unused-vars
+    init(gl, glInfo) { //eslint-disable-line no-unused-vars
       // to override
       const tex = this.initTexture(gl);
       return tex;

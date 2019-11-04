@@ -1,4 +1,4 @@
-import { initShader, initQuadBuffer, initTexture } from '../helpers/webGLHelper';
+import { initShader, initQuadBuffer } from '../helpers/webGLHelper';
 
 const QUAD_VERTEX_SOURCE = `attribute vec4 aVertexPosition;
 void main() {
@@ -95,9 +95,9 @@ class ContextManager {
       }`;
       fsSource = fsSource.replace(/texture\(/g, "texture2D(");
     }
-    console.log("--- Compiled Fragment shader ---")
-    console.log(fsSource);
-    console.log("--- Compiled Fragment shader ---")
+    console.log("--- Compiled Fragment shader ---") //eslint-disable-line no-console
+    console.log(fsSource);//eslint-disable-line no-console
+    console.log("--- Compiled Fragment shader ---")//eslint-disable-line no-console
     this.updateProgram(fsSource);
   }
 

@@ -59,7 +59,7 @@ export default {
     try {
       this.context = new ContextManager(canvas);
     } catch (error) {
-      console.error(error)
+      console.error(error) //eslint-disable-line no-console
       this.$emit('noWebGL');
       this.webglAvailable = false;
       return;
@@ -100,7 +100,7 @@ export default {
         this.resize();
         this.draw();
       } catch(err){
-        console.error(err)
+        console.error(err) //eslint-disable-line no-console
       }
     },
     draw() {

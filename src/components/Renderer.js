@@ -97,7 +97,7 @@ uniform vec4      iDate;                 // (year, month, day, time in seconds)
 }`;
       fsSource = fsSource.replace(/texture\(/g, "texture2D(");
     }
-    console.log(fsSource);
+    console.log(fsSource); //eslint-disable-line no-console
     this.updateProgram(fsSource);
   }
 
