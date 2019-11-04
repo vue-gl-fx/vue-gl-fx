@@ -1,6 +1,7 @@
 import UniformSampler2D from "@/components/types/GlFxTypeSampler2D.vue"
 import Uniformfloat from "@/components/types/GlFxTypeFloat.vue"
 import Uniformvec3 from "@/components/types/GlFxTypeVec3.vue"
+import Uniformvec2 from "@/components/types/GlFxTypeVec2.vue"
 import Uniformvec4 from "@/components/types/GlFxTypeVec4.vue"
 
 export default {
@@ -8,6 +9,7 @@ export default {
         UniformSampler2D,
         Uniformfloat,
         Uniformvec3,
+        Uniformvec2,
         Uniformvec4
     },
     props: {
