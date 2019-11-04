@@ -1,9 +1,9 @@
-import UniformSampler2D from "@/components/types/GlFxTypeSampler2D.vue"
-import Uniformfloat from "@/components/types/GlFxTypeFloat.vue"
-import Uniformint from "@/components/types/GlFxTypeInt.vue"
-import Uniformvec3 from "@/components/types/GlFxTypeVec3.vue"
-import Uniformvec2 from "@/components/types/GlFxTypeVec2.vue"
-import Uniformvec4 from "@/components/types/GlFxTypeVec4.vue"
+import UniformSampler2D from "../types/GlFxTypeSampler2D.vue"
+import Uniformfloat from "../types/GlFxTypeFloat.vue"
+import Uniformint from "../types/GlFxTypeInt.vue"
+import Uniformvec3 from "../types/GlFxTypeVec3.vue"
+import Uniformvec2 from "../types/GlFxTypeVec2.vue"
+import Uniformvec4 from "../types/GlFxTypeVec4.vue"
 
 export default {
     components: {

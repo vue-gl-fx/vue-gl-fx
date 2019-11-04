@@ -1,5 +1,5 @@
 <script>
-import mixin from "@/components/mixins/TypeMixin";
+import mixin from "../mixins/TypeMixin";
 
 export default {
   name: "GlFxTypeSampler2D",

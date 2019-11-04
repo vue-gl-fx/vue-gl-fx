@@ -16,7 +16,7 @@
 
 <script>
 
-import mixin from "@/components/mixins/UniformMixin"
+import mixin from "../mixins/UniformMixin"
 
 export default {
     mixins: [mixin],
