@@ -5,9 +5,21 @@ import GlFxTime from './components/uniforms/GlFxTime.vue'
 import GlFxFrame from './components/uniforms/GlFxFrame.vue'
 import GlFxMouse from './components/uniforms/GlFxMouse.vue'
 
-const VueGlFx = {
 
+export default class VueGlFx {
+    constructor(options = {}) {
+        const defaults = {
+            // for future use ?
+            accessorName: '$glfx'
+        };
+        this.options = { ...defaults, ...options };
+    }
+
+    webGLAvailable() {
+        return true;
+    }
 }
+
 VueGlFx.install = function (Vue) {
     Vue.component('gl-fx', GlFx)
     Vue.component('gl-fx-uniform', GlFxUniform)
@@ -16,5 +28,3 @@ VueGlFx.install = function (Vue) {
     Vue.component('gl-fx-frame', GlFxFrame)
     Vue.component('gl-fx-mouse', GlFxMouse)
 }
-
-export default VueGlFx;
