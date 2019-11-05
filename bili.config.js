@@ -1,13 +1,17 @@
 module.exports = {
-  plugins: [
-    'vue',
-  ],
+  plugins: {
+    vue: true
+  },
 
   postcss: {
     extract: true,
     extensions: ['.css', '.styl']
   },
 
-  format: ['cjs', 'umd', 'es'],
-  filename: 'index[suffix].js'
+  output: {
+    format: ['umd', 'es'],
+    fileName: 'index.[format].js',
+    moduleName:"VueGlFx",
+    minify: true
+  }
 }
