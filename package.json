@@ -1,6 +1,6 @@
 {
   "name": "vue-gl-fx",
-  "version": "0.1.0",
+  "version": "0.2.0-alpha",
   "private": false,
   "license": "MIT",
   "description": "A simple WebGL components for accelerated 2D filter or effects. Can be used with Shadertoys codes",
