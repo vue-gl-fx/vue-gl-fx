@@ -1,0 +1,33 @@
+// Placez vos paramètres dans ce fichier pour remplacer les paramètres par défaut et les paramètres utilisateur.
+{
+    "eslint.enable": true,
+    "eslint.options": {
+      "extensions": [".html", ".js", ".vue", ".jsx"]
+    },
+    "eslint.validate": [
+      {
+        "language": "html",
+        "autoFix": true
+      },
+      {
+        "language": "vue",
+        "autoFix": true
+      },
+      {
+        "language": "javascript",
+        "autoFix": true
+      },
+      {
+        "language": "javascriptreact",
+        "autoFix": true
+      }
+    ],
+    // Run the linter on save (onSave) or on type (onType)
+    "eslint.run": "onSave",
+    "eslint.autoFixOnSave": true,
+    "emmet.includeLanguages": {
+      "vue-html": "html"
+    },
+    "editor.autoIndent": true
+  }
+  
