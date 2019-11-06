@@ -21,6 +21,8 @@ export const initShader = (gl, vsSource, fsSource) => {
     console.log(`Error when initialising the program : ${gl.getProgramInfoLog(shaderProgram)}`); //eslint-disable-line
     throw new Error(gl.getProgramInfoLog(shaderProgram));
   }
+  gl.deleteShader(vertexShader);
+  gl.deleteShader(fragmentShader);
   return shaderProgram;
 };
 

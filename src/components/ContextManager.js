@@ -87,6 +87,10 @@ class ContextManager {
   }
 
   setFragmentShader(source) {
+    if(this.programInfo){
+      this.gl.deleteProgram(this.programInfo.program);
+    }
+
     this.ellapsedTime = 0.0;
     this.lastRenderDate = 0.0;
     const isShaderToy = source.indexOf('void mainImage') > -1;
