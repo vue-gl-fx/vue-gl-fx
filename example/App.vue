@@ -27,9 +27,6 @@
         type="sampler2D"
         input="http://picsum.photos/256/256/?random&v=1"
         autoplay="true"/>
-        <!--<gl-fx-uniform 
-        type="2DSampler" 
-        input="http://picsum.photos/256/256/?random&v=2"/> -->
     </gl-fx>
     <div class="app_control">
       <textarea
@@ -77,19 +74,8 @@ export default {
   data() {
     return {
       glslCode: DEFAULT_SHADER,
-      vflip: true,
-      color: [0.5,0.0,1.0]
     };
   },
-  mounted(){
-    window.requestAnimationFrame(this.update)
-  },
-  methods: {
-    update(){
-      this.color = [Math.random(), Math.random(), Math.random()];
-      //window.requestAnimationFrame(this.update)
-    }
-  }
 };
 </script>
 
