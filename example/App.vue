@@ -3,24 +3,9 @@
     id="app">
     <gl-fx
       :code="glslCode"
+      :autoplay="autoplay"
       class="app_shader"
     >
-      <gl-fx-uniform 
-        :input="0.8"
-        type="float"
-        name="iFloat"/>
-      <gl-fx-uniform 
-        :input="color"
-        type="vec3"
-        name="iColor"/>
-      <gl-fx-uniform 
-        :input="color"
-        type="vec3"
-        name="iColor2"/>
-      <gl-fx-time 
-        :input="color"
-        type="vec3"
-        name="iTime2"/>
       <gl-fx-uniform 
         :vflip="vflip"
         name="iChannel0"
@@ -74,6 +59,8 @@ export default {
   data() {
     return {
       glslCode: DEFAULT_SHADER,
+      autoplay:true,
+      vflip: false
     };
   },
 };
