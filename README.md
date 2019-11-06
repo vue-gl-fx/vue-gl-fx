@@ -124,7 +124,7 @@ Then use the components !
 
 <details><summary><strong>Context</strong></summary>
 <br>
-The `<gl-fx>` component is the top and only mandatory component.
+The `gl-fx` component is the top and only mandatory component.
 It draws the canvas, manage the vertex shader and upload your fragment shader to your GPU.
 
 ### props
@@ -141,7 +141,7 @@ It draws the canvas, manage the vertex shader and upload your fragment shader to
 <details><summary><strong>Uniforms</strong></summary>
 <br>
 
-The `<gl-fx-uniform>` component should be use inside a `<gl-fx>`component slot.
+The `gl-fx-uniform` component should be use inside a `<gl-fx>`component slot.
 For every uniform component you instanciate, the uniform will be declared then allocated and uploaded for you.
 
 ### props
