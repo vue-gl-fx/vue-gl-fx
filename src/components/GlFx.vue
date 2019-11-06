@@ -33,7 +33,11 @@ export default {
   name: 'GlFx',
   props: {
     isShaderToy: {
-      type: Boolean,
+      type: [Boolean],
+      default: true
+    },
+    injectShaderToyUniforms: {
+      type: [Boolean],
       default: true
     },
     code: { type: String, default: null },
@@ -45,7 +49,6 @@ export default {
   data() {
     return {
       webglAvailable: true,
-      injectShaderToyUniforms: true,
       uniforms: []
     };
   },
@@ -56,7 +59,6 @@ export default {
     },
     autoplay(to){
       if(to){
-        console.log("UNPAUSE)")
         this.context.setCurrentTime();
         this.draw()
       }
