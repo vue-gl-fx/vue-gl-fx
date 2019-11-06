@@ -9,7 +9,7 @@ module.exports = {
   },
 
   output: {
-    format: ['umd', 'es'],
+    format: ['cjs', 'es', 'umd'],
     fileName: 'index.[format].js',
     moduleName:"VueGlFx",
     minify: true

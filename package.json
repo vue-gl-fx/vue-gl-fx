@@ -1,18 +1,19 @@
 {
   "name": "vue-gl-fx",
-  "version": "0.2.0-alpha",
+  "version": "0.2.0-alpha.3",
   "private": false,
   "license": "MIT",
   "description": "A simple WebGL components for accelerated 2D filter or effects. Can be used with Shadertoys codes",
-  "main": "dist/index.umd.js",
+  "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
+  "unpkg": "dist/index.umd.js",
   "author": "Nicolas Chesné & Laurent Gabarre",
   "scripts": {
-    "dev": "npm run build && ./node_modules/poi/bin/cli.js",
+    "dev": "bili && ./node_modules/poi/bin/cli.js",
     "build:demo": "./node_modules/poi/bin/cli.js build",
     "build:demo:gh": "./node_modules/poi/bin/cli.js build --public-path /vue-gl-fx/",
     "publish:demo": "npm run build:demo:gh && gh-pages -d demo",
-    "build": "rm -rf ./dist && bili",
+    "build": "rm -rf ./dist && bili --env.NODE_ENV production --bundle-node-modules true",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
     "test": "npm run lint"
   },
@@ -41,7 +42,7 @@
     "gh-pages": "^2.1.1",
     "poi": "^10.2.7",
     "rollup-plugin-eslint": "^4.0.0",
-    "rollup-plugin-vue": "^4.2.0",
+    "rollup-plugin-vue": "^5.1.1",
     "stylus": "^0.54.7",
     "stylus-loader": "^3.0.2",
     "vue-template-compiler": "^2.5.16"
