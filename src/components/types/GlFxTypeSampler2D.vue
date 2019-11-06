@@ -73,6 +73,7 @@ export default {
           gl.UNSIGNED_BYTE,
           this.value
         );
+        this.forceUpdate = false;
       }
       gl.activeTexture(gl[`TEXTURE${glInfo.index}`]);
       gl.uniform1i(glInfo.loc, glInfo.index);
