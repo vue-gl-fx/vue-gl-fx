@@ -32,6 +32,7 @@ class ContextManager {
     
         // use for iTimeDelta
         this.lastRenderDate = 0.0;
+        this.ellapsedTime = 0.0;
     
         // use for iChannel
         this.uniforms = [];
@@ -68,8 +69,13 @@ class ContextManager {
     })
   }
 
+  setCurrentTime(){
+    this.lastRenderDate = window.performance.now()*0.001;
+  }
+
   reset(){
-    this.lastRenderDate = 0;
+    this.lastRenderDate = 0.0;
+    this.ellapsedTime = 0.0;
 
     this.uniforms.forEach(uni => {
       try {
@@ -81,6 +87,8 @@ class ContextManager {
   }
 
   setFragmentShader(source) {
+    this.ellapsedTime = 0.0;
+    this.lastRenderDate = 0.0;
     const isShaderToy = source.indexOf('void mainImage') > -1;
     let fsSource = `precision mediump float;`
 
@@ -113,8 +121,12 @@ class ContextManager {
 
   updateUniforms() {
     const now = window.performance.now()*.001;
+    const delta = now - this.lastRenderDate;
+    this.lastRenderDate = now;
+    this.ellapsedTime += delta
+
     this.uniforms.forEach(uni => {
-        uni.update(now);
+        uni.update(this.ellapsedTime);
     })
   }
 
@@ -127,7 +139,7 @@ class ContextManager {
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); // eslint-disable-line
   }
 
-  draw() {
+  draw(resetTime = false) {
     this.clear();
     if (!this.programInfo) return;
     const { gl } = this;
@@ -148,7 +160,9 @@ class ContextManager {
     gl.enableVertexAttribArray(this.programInfo.attribLocations.vertexPosition);
 
     gl.useProgram(this.programInfo.program);
-
+    if(resetTime){
+      this.lastRenderDate = window.performance.now()*0.001;
+    }
     this.updateUniforms();
 
     const offsetDrawArray = 0;

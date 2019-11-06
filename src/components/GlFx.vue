@@ -37,6 +37,10 @@ export default {
       default: true
     },
     code: { type: String, default: null },
+    autoplay: {
+      type: Boolean,
+      default: true
+    }
   },
   data() {
     return {
@@ -50,6 +54,13 @@ export default {
       this.context.setFragmentShader(value);
       this.draw();
     },
+    autoplay(to){
+      if(to){
+        console.log("UNPAUSE)")
+        this.context.setCurrentTime();
+        this.draw()
+      }
+    }
   },
   created() {
     
@@ -105,7 +116,9 @@ export default {
     },
     draw() {
       this.context.draw();
-      this.rafId = requestAnimationFrame(this.draw);
+      if(this.autoplay){
+        this.rafId = requestAnimationFrame(this.draw);
+      }
     },
     registerUniform(uni){
       this.uniforms.push(uni);
