@@ -64,8 +64,6 @@ class ContextManager {
     };
     this.uniforms.forEach((uni) => {
         uni.alloc(shaderProgram);
-
-
     })
   }
 
@@ -107,9 +105,11 @@ class ContextManager {
       }`;
       fsSource = fsSource.replace(/texture\(/g, "texture2D(");
     }
-    console.log("--- Compiled Fragment shader ---") //eslint-disable-line no-console
-    console.log(fsSource);//eslint-disable-line no-console
-    console.log("--- Compiled Fragment shader ---")//eslint-disable-line no-console
+    if(process.env.NODE_ENV !== "production"){
+      console.log("--- Compiled Fragment shader ---") //eslint-disable-line no-console
+      console.log(fsSource);//eslint-disable-line no-console
+      console.log("--- Compiled Fragment shader ---")//eslint-disable-line no-console
+    }
     this.updateProgram(fsSource);
   }
 
