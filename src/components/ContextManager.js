@@ -188,7 +188,7 @@ class ContextManager {
   }
 
   destroy() {
-    this.cache.keys().forEach((key)=>{
+    Object.keys(this.cache).forEach((key)=>{
       this.gl.deleteProgram(this.cache[key]);
     })
     this.uniforms.forEach((uni)=> {
