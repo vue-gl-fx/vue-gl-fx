@@ -80,7 +80,7 @@ export default {
     },
 
     initTexture(gl) {
-      const isPowerOf2 = value => (value && value - 1) === 0;
+      const isPowerOf2 = value => (value & (value - 1)) === 0;
       const image = this.value;
       const autoMipmap = this.mipmap;
       const texture = gl.createTexture();
