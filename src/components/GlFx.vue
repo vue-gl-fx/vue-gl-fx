@@ -2,7 +2,7 @@
   <canvas
     v-if="webglAvailable"
     ref="canvas"
-    :style="'background-color:'+bgColor"
+    :style="`background-color:${bgColor}`"
     class="vue-shader"
   >
     <slot/>
