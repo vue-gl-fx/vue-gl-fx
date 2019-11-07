@@ -94,6 +94,7 @@ export default {
 
         },
         destroy() {
+            this.$refs.child.destroy(this.context.gl, this.glInfo);
             this.context = null;
         }
     }

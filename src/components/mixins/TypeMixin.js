@@ -34,5 +34,8 @@ export default {
         update(gl, glInfo){ //eslint-disable-line no-unused-vars
             // to override
         },
+        destroy(glInfo){ //eslint-disable-line no-unused-vars
+            //to override
+        }
     }
 }

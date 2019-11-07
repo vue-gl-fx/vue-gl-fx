@@ -107,6 +107,10 @@ export default {
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       }
       return texture;
+    },
+    destroy(gl, glInfo){ //eslint-disable-line no-unused-vars
+      gl.bindTexture(gl.TEXTURE_2D, null);
+      gl.deleteTexture(glInfo.texture);
     }
   }
 };

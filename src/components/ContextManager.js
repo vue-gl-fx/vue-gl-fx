@@ -194,6 +194,11 @@ class ContextManager {
     this.uniforms.forEach((uni)=> {
       uni.destroy();
     })
+    
+    this.canvas.width = 1;
+    this.gl.canvas.height = 1;
+    
+    this.gl.getExtension('WEBGL_lose_context').loseContext();
   }
 }
 

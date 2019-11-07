@@ -65,7 +65,7 @@ export default {
     }
   },
   created() {
-    
+    this.destroyed = false
   },
   async mounted() {
     const { canvas } = this.$refs;
@@ -85,6 +85,7 @@ export default {
     this.onUniformReady()
   },
   beforeDestroy() {
+    this.destroyed = true
     window.removeEventListener('resize', this.resize);
     cancelAnimationFrame(this.rafId);
     this.context.destroy();
@@ -112,14 +113,17 @@ export default {
         window.addEventListener('resize', this.resize);
         this.resize();
         this.draw();
+        this.$emit("started")
       } catch(err){
         console.error(err) //eslint-disable-line no-console
       }
     },
     draw() {
-      this.context.draw();
-      if(this.autoplay){
-        this.rafId = requestAnimationFrame(this.draw);
+      if(!this.destroyed){
+        this.context.draw();
+        if(this.autoplay){
+          this.rafId = requestAnimationFrame(this.draw);
+        }
       }
     },
     registerUniform(uni){
