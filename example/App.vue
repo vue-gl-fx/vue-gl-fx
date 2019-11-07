@@ -10,7 +10,13 @@
         :vflip="vflip"
         name="iChannel0"
         type="sampler2D"
-        input="http://picsum.photos/256/256/?random&v=1"
+        input="http://picsum.photos/1800/1600/?random&v=1"
+        autoplay="true"/>
+      <gl-fx-uniform 
+        :vflip="vflip"
+        name="iChannel1"
+        type="sampler2D"
+        input="https://picsum.photos/id/1003/1800/1600"
         autoplay="true"/>
     </gl-fx>
     <div class="app_control">
