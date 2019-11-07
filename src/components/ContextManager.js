@@ -1,4 +1,4 @@
-import { initShader, initQuadBuffer } from '../helpers/webGLHelper';
+import { initShader, initQuadBuffer, getHash } from '../helpers/webGLHelper';
 
 const QUAD_VERTEX_SOURCE = `attribute vec4 aVertexPosition;
 void main() {
@@ -28,7 +28,9 @@ class ContextManager {
         this.gl = gl;
         this.canvas = canvas;
         this.programInfo = null;
+        this.cache = {}
         this.quadBuffer = initQuadBuffer(gl);
+        this.autopurge = false
     
         // use for iTimeDelta
         this.lastRenderDate = 0.0;
@@ -55,7 +57,18 @@ class ContextManager {
 
   updateProgram(fsSource) {
     const { gl } = this;
-    const shaderProgram = initShader(gl, QUAD_VERTEX_SOURCE, fsSource);
+    const hash = getHash(fsSource);
+    let shaderProgram;
+    if(this.cache[hash]){
+      console.log("program found in cache")
+      
+      shaderProgram = this.cache[hash];
+      gl.useProgram(shaderProgram);
+    } else {
+      console.log("new program created")
+      shaderProgram = initShader(gl, QUAD_VERTEX_SOURCE, fsSource);
+      this.cache[hash] = shaderProgram;
+    }
     this.programInfo = {
       program: shaderProgram,
       attribLocations: {
@@ -85,7 +98,7 @@ class ContextManager {
   }
 
   setFragmentShader(source) {
-    if(this.programInfo){
+    if(this.programInfo && this.autopurge){
       this.gl.deleteProgram(this.programInfo.program);
     }
 
@@ -175,6 +188,9 @@ class ContextManager {
   }
 
   destroy() {
+    this.cache.keys().forEach((key)=>{
+      this.gl.deleteProgram(this.cache[key]);
+    })
     this.uniforms.forEach((uni)=> {
       uni.destroy();
     })
