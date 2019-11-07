@@ -60,12 +60,9 @@ class ContextManager {
     const hash = getHash(fsSource);
     let shaderProgram;
     if(this.cache[hash]){
-      console.log("program found in cache")
-      
       shaderProgram = this.cache[hash];
       gl.useProgram(shaderProgram);
     } else {
-      console.log("new program created")
       shaderProgram = initShader(gl, QUAD_VERTEX_SOURCE, fsSource);
       this.cache[hash] = shaderProgram;
     }
