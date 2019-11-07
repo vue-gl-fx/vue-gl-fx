@@ -117,7 +117,8 @@ Then use the components !
 
 <details><summary><strong>Context</strong></summary>
 <br>
-The `gl-fx` component is the top and only mandatory component.
+
+The `<gl-fx>` component is the top and only mandatory component.
 It draws the canvas, manage the vertex shader and upload your fragment shader to your GPU.
 
 ### props
