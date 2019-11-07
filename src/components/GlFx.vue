@@ -2,8 +2,8 @@
   <canvas
     v-if="webglAvailable"
     ref="canvas"
+    :style="'background-color:'+bgColor"
     class="vue-shader"
-    style="background-color:black"
   >
     <slot/>
     <gl-fx-time
@@ -44,6 +44,10 @@ export default {
     autoplay: {
       type: Boolean,
       default: true
+    },
+    bgColor: {
+      type: String,
+      default: "black"
     }
   },
   data() {
