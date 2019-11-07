@@ -61,7 +61,11 @@ export default {
       return tex;
     },
     update(gl, glInfo) {
+      gl.uniform1i(glInfo.loc, glInfo.index);
+      gl.activeTexture(gl[`TEXTURE${glInfo.index}`]);
+      
       gl.bindTexture(gl.TEXTURE_2D, glInfo.texture);
+
       if (this.forceUpdate) {
         gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, this.vflip);
         gl.texSubImage2D(
@@ -75,8 +79,6 @@ export default {
         );
         this.forceUpdate = false;
       }
-      gl.activeTexture(gl[`TEXTURE${glInfo.index}`]);
-      gl.uniform1i(glInfo.loc, glInfo.index);
     },
 
     initTexture(gl) {
