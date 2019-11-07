@@ -88,23 +88,16 @@ Then use the components !
 <template>
   <div 
     id="app">
-    <gl-fx
-      :code="glslCode"
-      class="app_shader"
-    >
-      <gl-fx-time
-      v-if="injectShaderToyUniforms"
-      name="iTime"/>
-      <gl-fx-resolution 
-        v-if="injectShaderToyUniforms"
-        name="iResolution"/>
+    <gl-fx :code="glslCode" class="app_shader">
+      <gl-fx-time name="iTime"/>
+      <gl-fx-resolution name="iResolution"/>
     </gl-fx>
     </div>
   </div>
 </template>
 
 <script>
-  const DEFAULT_SHADER = `void main() {
+  const A_SHADER = `void main() {
     vec2 st = gl_FragCoord.xy / iResolution.xy;
     gl_FragColor = vec4(st.xy, (cos(iTime) + 1.0) * 0.5, 1.0);
   }`;
@@ -113,7 +106,7 @@ Then use the components !
     name: 'App',
     data() {
       return {
-        glslCode: DEFAULT_SHADER,
+        glslCode: A_SHADER,
       };
     },
   };
@@ -158,7 +151,7 @@ For every uniform component you instanciate, the uniform will be declared then a
 <details><summary><strong>Special Uniforms</strong></summary>
 <br>
 
-The special unfiorms components should be used just like regular uniforms except for the fact you can't specify their type or input, because they rely on internal mecanism to upload their value directly, such as ellapsed time, or mouse position.
+The special uniforms components should be used just like regular uniforms except for the fact you can't specify their type or input, because they rely on internal mecanism to upload their value directly, such as ellapsed time, or mouse position.
 
 ### general props
 -   **name** : String (required)
