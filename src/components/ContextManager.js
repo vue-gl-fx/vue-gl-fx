@@ -1,5 +1,5 @@
 import { initShader, initQuadBuffer } from '../helpers/webGLHelper';
-import programStore from './ProgramStore';
+import ProgramStore from './ProgramStore';
 
 const QUAD_VERTEX_SOURCE = `attribute vec4 aVertexPosition;
 void main() {
@@ -39,6 +39,8 @@ class ContextManager {
         // use for iChannel
         this.uniforms = [];
         this.textures = [];
+
+        this.programStore = new ProgramStore();
       }
     
 
@@ -57,12 +59,12 @@ class ContextManager {
 
   updateProgram(fsSource) {
     const { gl } = this;
-    let shaderProgram = programStore.getProgram(fsSource)
+    let shaderProgram = this.programStore.getProgram(fsSource)
     if(shaderProgram !== undefined){
       gl.useProgram(shaderProgram);
     } else {
       shaderProgram = initShader(gl, QUAD_VERTEX_SOURCE, fsSource);
-      programStore.addProgram(fsSource, shaderProgram);
+      this.programStore.addProgram(fsSource, shaderProgram);
     }
     this.programInfo = {
       program: shaderProgram,
@@ -183,10 +185,10 @@ class ContextManager {
   }
 
   destroy() {
-    programStore.getAll().forEach((program)=>{
+    this.programStore.getAll().forEach((program)=>{
       this.gl.deleteProgram(program);
     })
-    programStore.clear();
+    this.programStore.clear();
     this.uniforms.forEach((uni)=> {
       uni.destroy();
     })

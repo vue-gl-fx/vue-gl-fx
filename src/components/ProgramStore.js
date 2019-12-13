@@ -1,14 +1,9 @@
 
 import { getHash } from '../helpers/webGLHelper';
 
-class ProgramStore {
+export default class ProgramStore {
     constructor(){
-     if(! ProgramStore._instance){
        this._data = new Map();
-       ProgramStore._instance = this;
-     }
-  
-     return ProgramStore._instance;
     }
   
     addProgram(src, program){
@@ -47,8 +42,3 @@ class ProgramStore {
     }
   
   }
-  
-  const instance = new ProgramStore();
-  Object.freeze(instance);
-  
-  export default instance;
