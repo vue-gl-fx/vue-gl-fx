@@ -8,18 +8,34 @@
     >
       <gl-fx-uniform 
         :vflip="vflip"
+        :clamp="clamp"
         name="iChannel0"
         type="sampler2D"
         input="http://picsum.photos/1800/1600/?random&v=1"
         autoplay="true"/>
       <gl-fx-uniform 
         :vflip="vflip"
+        :clamp="clamp"
         name="iChannel1"
         type="sampler2D"
         input="https://picsum.photos/id/1003/1800/1600"
         autoplay="true"/>
     </gl-fx>
     <div class="app_control">
+      <input 
+        id="vflip" 
+        v-model="vflip"
+        type="checkbox" 
+        value="vflip" 
+        name="vflip">
+      <label for="vflip">VFlip</label>
+      <input 
+        id="clamp" 
+        v-model="clamp" 
+        type="checkbox"
+        value="clamp" 
+        name="clamp">
+      <label for="clamp">Clamp</label>
       <textarea
         v-model.lazy="glslCode"
         class="app_control-textarea"
@@ -66,7 +82,8 @@ export default {
     return {
       glslCode: DEFAULT_SHADER,
       autoplay:true,
-      vflip: false
+      vflip: false,
+      clamp: true
     };
   },
 };
