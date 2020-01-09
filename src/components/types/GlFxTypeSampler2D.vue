@@ -16,7 +16,11 @@ export default {
     mipmap: {
       type: Boolean,
       default: false
-    }
+    },
+    clamp: {
+      type: Boolean,
+      default: false
+    },
   },
   data() {
     return {
@@ -31,6 +35,9 @@ export default {
   },
   watch: {
     vflip() {
+      this.forceUpdate = true;
+    },
+    clamp() {
       this.forceUpdate = true;
     }
   },
@@ -77,14 +84,14 @@ export default {
           gl.UNSIGNED_BYTE,
           this.value
         );
+
+        this.paramTexture(gl); 
         this.forceUpdate = false;
       }
     },
 
     initTexture(gl) {
-      const isPowerOf2 = value => (value & (value - 1)) === 0;
       const image = this.value;
-      const autoMipmap = this.mipmap;
       const texture = gl.createTexture();
 
       gl.bindTexture(gl.TEXTURE_2D, texture);
@@ -99,14 +106,23 @@ export default {
         image
       );
 
-      if (autoMipmap && isPowerOf2(image.width) && isPowerOf2(image.height)) {
+      this.paramTexture(gl);      
+      return texture;
+    },
+    isPowerOf2 (value){
+      return (value & (value - 1)) === 0;
+    },
+    paramTexture(gl){
+      const image = this.value;
+      const autoMipmap = this.mipmap;
+
+      if (autoMipmap && this.isPowerOf2(image.width) && this.isPowerOf2(image.height)) {
         gl.generateMipmap(gl.TEXTURE_2D);
       } else {
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
-        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, this.clamp ? gl.CLAMP_TO_EDGE:gl.REPEAT);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, this.clamp ? gl.CLAMP_TO_EDGE:gl.REPEAT);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
       }
-      return texture;
     },
     destroy(gl, glInfo){ //eslint-disable-line no-unused-vars
       gl.bindTexture(gl.TEXTURE_2D, null);
